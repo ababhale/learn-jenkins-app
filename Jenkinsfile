@@ -4,9 +4,17 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                echo 'Building the node app'
+                sh '''
+                    ls -lart
+                    node -v
+                    npm -v
+                    npm ci
+                    npm run build
+                    ls -lart
+                '''
             }
         }
     }
